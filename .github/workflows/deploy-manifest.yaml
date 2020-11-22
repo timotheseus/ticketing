@@ -1,9 +1,8 @@
-
 name: deploy-manifest
 
 on:
   push:
-    branches: 
+    branches:
       - master
     paths:
       - 'infra/**'
@@ -13,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd auth && docker build -t tvanderzwaag/auth .
       - uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
